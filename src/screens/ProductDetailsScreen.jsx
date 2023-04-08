@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
   btnText: {
     color: "white",
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 24,
   },
 });

@@ -21,7 +21,7 @@ const ProductsScreen = () => {
             }}
             style={{
               width: width / 2,
-              aspectRatio: 1,
+              aspectRatio: 1.5,
               resizeMode: "cover",
             }}
           />
