@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   Pressable,
@@ -10,25 +11,30 @@ import {
 } from "react-native";
 import products from "../data/products";
 import formatCurrency from "../utils/formatCurrency";
+import { useSelector } from "react-redux";
+import { selectCurProduct } from "../store/productsSlice";
+import { useState } from "react";
 const ProductDetailsScreen = () => {
-  const product = products[0];
+  const product = useSelector(selectCurProduct);
   const { width } = useWindowDimensions();
+  const [isLoading, setIsLoading] = useState(true);
   return (
     <View>
-      <ScrollView>
+      <ScrollView style={{ height: "100%" }}>
         {/* Image Carousel */}
         <FlatList
           data={product.images}
           renderItem={({ item }) => (
-            <Image
-              source={{ uri: item }}
-              style={{
-                width,
-                aspectRatio: 1.5,
-                resizeMode: "contain",
-                padding: 0,
-              }}
-            />
+            <>
+              <Image
+                source={{ uri: item }}
+                style={{
+                  width,
+                  aspectRatio: 1.5,
+                  resizeMode: "contain",
+                }}
+              />
+            </>
           )}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -74,7 +80,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     position: "absolute",
-    bottom: 30,
+    bottom: 10,
     width: "80%",
     backgroundColor: "black",
     borderRadius: 100,
@@ -84,6 +90,6 @@ const styles = StyleSheet.create({
   btnText: {
     color: "white",
     textAlign: "center",
-    fontSize: 24,
+    fontSize: 20,
   },
 });

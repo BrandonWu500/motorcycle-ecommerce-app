@@ -67,11 +67,11 @@ export default [
   {
     id: "6",
     image:
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970199/motorcycle-ecommerce/panigale_kwz5z3.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985009/motorcycle-ecommerce/panigale_kwz5z3_kyvuyk.jpg",
     images: [
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970199/motorcycle-ecommerce/panigale_kwz5z3.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970199/motorcycle-ecommerce/panigale_kwz5z3.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970199/motorcycle-ecommerce/panigale_kwz5z3.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985009/motorcycle-ecommerce/panigale_kwz5z3_kyvuyk.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985009/motorcycle-ecommerce/panigale_kwz5z3_kyvuyk.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985009/motorcycle-ecommerce/panigale_kwz5z3_kyvuyk.jpg",
     ],
     name: "Ducati Panigale",
     price: 21995,
@@ -106,11 +106,11 @@ export default [
   {
     id: "9",
     image:
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680969949/motorcycle-ecommerce/fireblade_hxzfrv.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680984996/motorcycle-ecommerce/fireblade_hxzfrv_vmsmwq.jpg",
     images: [
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680969949/motorcycle-ecommerce/fireblade_hxzfrv.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680969949/motorcycle-ecommerce/fireblade_hxzfrv.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680969949/motorcycle-ecommerce/fireblade_hxzfrv.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680984996/motorcycle-ecommerce/fireblade_hxzfrv_vmsmwq.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680984996/motorcycle-ecommerce/fireblade_hxzfrv_vmsmwq.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680984996/motorcycle-ecommerce/fireblade_hxzfrv_vmsmwq.jpg",
     ],
     name: "Honda Fireblade",
     price: 16499,
@@ -119,11 +119,11 @@ export default [
   {
     id: "10",
     image:
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970214/motorcycle-ecommerce/r3_r2x6t4.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985144/motorcycle-ecommerce/r3_vb5dqf.jpg",
     images: [
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970214/motorcycle-ecommerce/r3_r2x6t4.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970214/motorcycle-ecommerce/r3_r2x6t4.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970214/motorcycle-ecommerce/r3_r2x6t4.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985144/motorcycle-ecommerce/r3_vb5dqf.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985144/motorcycle-ecommerce/r3_vb5dqf.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680985144/motorcycle-ecommerce/r3_vb5dqf.jpg",
     ],
     name: "Yamaha YZF-R3",
     price: 5299,
