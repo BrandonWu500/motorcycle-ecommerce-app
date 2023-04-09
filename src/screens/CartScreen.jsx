@@ -25,16 +25,19 @@ const CartScreen = () => {
     );
   } else {
     content = (
-      <>
+      <View style={styles.container}>
         <FlatList
           data={cartItems}
           renderItem={({ item }) => <CartItem cartItem={item} />}
-          ListFooterComponent={<OrderSummary />}
+          ListFooterComponent={() => (
+            <View style={{ paddingBottom: 40 }}></View>
+          )}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          style={styles.cartItems}
         />
-        <Pressable style={styles.btn}>
-          <Text style={styles.btnText}>Checkout</Text>
-        </Pressable>
-      </>
+        <OrderSummary />
+      </View>
     );
   }
 
@@ -53,12 +56,11 @@ const styles = StyleSheet.create({
     textTransform: "capitalize",
   },
   btn: {
-    position: "absolute",
-    bottom: 30,
     width: "80%",
     backgroundColor: "black",
     borderRadius: 100,
     padding: 20,
+    marginVertical: 20,
     alignSelf: "center",
   },
   btnText: {

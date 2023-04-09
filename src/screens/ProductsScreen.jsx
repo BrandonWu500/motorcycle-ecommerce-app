@@ -33,6 +33,7 @@ const ProductsScreen = () => {
               width: width / 2,
               aspectRatio: 1.5,
               resizeMode: "cover",
+              backgroundColor: "lightgray",
             }}
           />
         </Pressable>

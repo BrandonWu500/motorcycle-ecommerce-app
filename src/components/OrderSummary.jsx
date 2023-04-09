@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import {
   selectShippingCost,
@@ -25,12 +25,17 @@ const OrderSummary = () => {
         <Text style={styles.textBold}>Total</Text>
         <Text style={styles.textBold}>{formatCurrency(total)}</Text>
       </View>
+      <Pressable style={styles.btn}>
+        <Text style={styles.btnText}>Checkout</Text>
+      </Pressable>
     </View>
   );
 };
 export default OrderSummary;
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
+    width: "100%",
     padding: 20,
     borderTopColor: "lightgray",
     borderTopWidth: 1,
@@ -47,5 +52,18 @@ const styles = StyleSheet.create({
   textBold: {
     fontSize: 18,
     fontWeight: 500,
+  },
+  btn: {
+    width: "80%",
+    backgroundColor: "black",
+    borderRadius: 100,
+    padding: 20,
+    marginVertical: 20,
+    alignSelf: "center",
+  },
+  btnText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 20,
   },
 });

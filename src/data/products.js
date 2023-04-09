@@ -2,10 +2,9 @@ export default [
   {
     id: "1",
     image:
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970170/motorcycle-ecommerce/gsx_jfdm02.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1681006890/motorcycle-ecommerce/gsx-1_vby11j.jpg",
     images: [
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970170/motorcycle-ecommerce/gsx_jfdm02.jpg",
-      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970170/motorcycle-ecommerce/gsx_jfdm02.jpg",
+      "https://res.cloudinary.com/dqrdsleqt/image/upload/v1681006890/motorcycle-ecommerce/gsx-1_vby11j.jpg",
       "https://res.cloudinary.com/dqrdsleqt/image/upload/v1680970170/motorcycle-ecommerce/gsx_jfdm02.jpg",
     ],
     name: "Suzuki GSX",
