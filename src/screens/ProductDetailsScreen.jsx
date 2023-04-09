@@ -11,13 +11,18 @@ import {
 } from "react-native";
 import products from "../data/products";
 import formatCurrency from "../utils/formatCurrency";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurProduct } from "../store/productsSlice";
 import { useState } from "react";
+import { addCartItem } from "../store/cartSlice";
 const ProductDetailsScreen = () => {
+  const dispatch = useDispatch();
   const product = useSelector(selectCurProduct);
   const { width } = useWindowDimensions();
-  const [isLoading, setIsLoading] = useState(true);
+
+  const handleAddToCart = () => {
+    dispatch(addCartItem(product));
+  };
   return (
     <View>
       <ScrollView style={{ height: "100%" }}>
@@ -49,7 +54,7 @@ const ProductDetailsScreen = () => {
         </View>
       </ScrollView>
 
-      <Pressable style={styles.btn}>
+      <Pressable style={styles.btn} onPress={handleAddToCart}>
         <Text style={styles.btnText}>Add to Cart</Text>
       </Pressable>
     </View>
