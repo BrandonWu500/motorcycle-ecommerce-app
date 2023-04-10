@@ -29,7 +29,9 @@ const CartItem = ({ cartItem }) => {
             <Feather name="plus-circle" size={24} color="gray" />
           </Pressable>
         </View>
-        <Text style={styles.price}>{formatCurrency(product.price)}</Text>
+        <Text style={styles.price}>
+          {formatCurrency(product.price * quantity)}
+        </Text>
       </View>
     </View>
   );
