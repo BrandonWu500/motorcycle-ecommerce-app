@@ -1,5 +1,6 @@
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   Image,
   Pressable,
@@ -15,14 +16,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCurProduct } from "../store/productsSlice";
 import { useState } from "react";
 import { addCartItem } from "../store/cartSlice";
-const ProductDetailsScreen = () => {
+import { useGetProductQuery } from "../store/apiSlice";
+const ProductDetailsScreen = ({ route }) => {
+  const { itemId } = route.params;
   const dispatch = useDispatch();
-  const product = useSelector(selectCurProduct);
+  // const product = useSelector(selectCurProduct);
+  const { data: product, isLoading, error } = useGetProductQuery(itemId);
   const { width } = useWindowDimensions();
 
   const handleAddToCart = () => {
     dispatch(addCartItem(product));
+    Alert.alert(`${product.name}`, "Added to Cart");
   };
+
+  if (isLoading) return <ActivityIndicator size="large" />;
+
+  if (error) return <Text>{error?.data?.message}</Text>;
+
   return (
     <View>
       <ScrollView style={{ height: "100%" }}>

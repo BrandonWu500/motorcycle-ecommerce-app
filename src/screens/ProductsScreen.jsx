@@ -8,7 +8,6 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import products from "../data/products";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { setCurProduct } from "../store/productsSlice";
@@ -20,9 +19,8 @@ const ProductsScreen = () => {
 
   const { data: products, isLoading, error } = useGetAllProductsQuery();
 
-  const handlePress = (id) => {
-    dispatch(setCurProduct(id));
-    navigation.navigate("Product Details");
+  const handlePress = (itemId) => {
+    navigation.navigate("Product Details", { itemId });
   };
 
   if (isLoading) return <ActivityIndicator size="large" />;
@@ -33,7 +31,7 @@ const ProductsScreen = () => {
     <FlatList
       data={products}
       renderItem={({ item }) => (
-        <Pressable style={{ padding: 1 }} onPress={() => handlePress(item.id)}>
+        <Pressable style={{ padding: 1 }} onPress={() => handlePress(item._id)}>
           <Image
             source={{
               uri: item.image,
