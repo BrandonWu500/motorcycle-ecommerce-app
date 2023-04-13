@@ -22,6 +22,9 @@ export const apiSlice = createApi({
         body: orderData,
       }),
     }),
+    getOrder: builder.query({
+      query: (ref) => `/orders/${ref}`,
+    }),
   }),
 });
 
@@ -29,4 +32,5 @@ export const {
   useGetAllProductsQuery,
   useGetProductQuery,
   useCreateOrderMutation,
+  useGetOrderQuery,
 } = apiSlice;
