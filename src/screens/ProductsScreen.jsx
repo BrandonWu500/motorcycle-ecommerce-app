@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   Pressable,
@@ -11,15 +12,23 @@ import products from "../data/products";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { setCurProduct } from "../store/productsSlice";
+import { useGetAllProductsQuery } from "../store/apiSlice";
 const ProductsScreen = () => {
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
 
+  const { data: products, isLoading, error } = useGetAllProductsQuery();
+
   const handlePress = (id) => {
     dispatch(setCurProduct(id));
     navigation.navigate("Product Details");
   };
+
+  if (isLoading) return <ActivityIndicator size="large" />;
+
+  if (error) return <Text>{error?.data?.message}</Text>;
+
   return (
     <FlatList
       data={products}
