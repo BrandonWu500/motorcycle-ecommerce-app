@@ -38,6 +38,8 @@ const cartSlice = createSlice({
         );
       }
     },
+
+    clearCart: () => initialState,
   },
 });
 
@@ -62,6 +64,6 @@ export const selectTotal = createSelector(
   (subtotal, shippingCost) => subtotal + shippingCost
 );
 
-export const { addCartItem, updateCartItem } = cartSlice.actions;
+export const { addCartItem, updateCartItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

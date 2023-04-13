@@ -36,7 +36,7 @@ const CartScreen = () => {
           showsVerticalScrollIndicator={false}
           style={styles.cartItems}
         />
-        <OrderSummary />
+        <OrderSummary cartItems={cartItems} />
       </View>
     );
   }
