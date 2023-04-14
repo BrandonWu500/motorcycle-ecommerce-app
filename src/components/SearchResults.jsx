@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -9,6 +10,7 @@ import {
 import { useGetOrderQuery } from "../store/apiSlice";
 import { FontAwesome5 } from "@expo/vector-icons";
 import formatCurrency from "../utils/formatCurrency";
+import OrderItem from "./OrderItem";
 const SearchResults = ({ searchTerm }) => {
   const [filteredSearchTerm, setFilteredSearchTerm] = useState(searchTerm);
   const { data, isLoading, error } = useGetOrderQuery(filteredSearchTerm);
@@ -24,33 +26,43 @@ const SearchResults = ({ searchTerm }) => {
   if (error) return <Text>{error?.data?.message}</Text>;
 
   return (
-    <View style={styles.container}>
-      {Object.entries(data.customer).map(([key, val]) => (
-        <View style={styles.row} key={key}>
-          <Text style={styles.key}>{key}:</Text>
-          <Text style={styles.val}>{val}</Text>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        {Object.entries(data.customer).map(([key, val]) => (
+          <View style={styles.row} key={key}>
+            <Text style={styles.key}>{key}:</Text>
+            <Text style={styles.val}>{val}</Text>
+          </View>
+        ))}
+        <View style={styles.row}>
+          <Text style={styles.key}>Total:</Text>
+          <Text style={styles.val}>{formatCurrency(data.total)}</Text>
         </View>
-      ))}
-      <View style={styles.row}>
-        <Text style={styles.key}>Total:</Text>
-        <Text style={styles.val}>{formatCurrency(data.total)}</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.key}>Status:</Text>
-      </View>
-      <View style={styles.rowSpread}>
-        <View style={styles.col}>
-          <Text style={styles.valBold}>Preparing</Text>
-          <FontAwesome5 name="motorcycle" size={24} color="black" />
+        <View style={styles.row}>
+          <Text style={styles.key}>Status:</Text>
         </View>
-        <Text style={styles.val}>Shipped</Text>
-        <Text style={styles.val}>Delivered</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.key}>Items:</Text>
+        <View style={styles.rowSpread}>
+          <View style={styles.col}>
+            <Text style={styles.valBold}>Preparing</Text>
+            <FontAwesome5 name="motorcycle" size={24} color="black" />
+          </View>
+          <Text style={styles.val}>Shipped</Text>
+          <Text style={styles.val}>Delivered</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.key}>Items:</Text>
+        </View>
         {/* do product lookup by id */}
+        {/* display image, name, price and quantity of each bike */}
+        {data.items.map((item) => (
+          <OrderItem
+            productId={item.product}
+            quantity={item.quantity}
+            key={item.product}
+          />
+        ))}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 export default SearchResults;

@@ -33,6 +33,8 @@ const OrderSummary = ({ cartItems }) => {
 
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
+  console.log(cartItems);
+
   useEffect(() => {
     if (isSuccess) {
       Alert.alert("Order Created", `Your Order ID is ${data?.ref}`);
@@ -77,7 +79,14 @@ const OrderSummary = ({ cartItems }) => {
 
   const handleCreateOrder = () => {
     createOrder({
-      items: cartItems,
+      // to only get the properties we need
+      items: cartItems.reduce(
+        (items, item) => [
+          ...items,
+          { product: item.product._id, quantity: item.quantity },
+        ],
+        []
+      ),
       subtotal,
       shipping: shippingCost,
       total,

@@ -21,11 +21,11 @@ const CartItem = ({ cartItem }) => {
           <Text style={styles.name}>{product.name}</Text>
         </View>
         <View style={styles.row}>
-          <Pressable onPress={() => decQty(product.id)}>
+          <Pressable onPress={() => decQty(product._id)}>
             <Feather name="minus-circle" size={24} color="gray" />
           </Pressable>
           <Text style={styles.quantity}>{quantity}</Text>
-          <Pressable onPress={() => incQty(product.id)}>
+          <Pressable onPress={() => incQty(product._id)}>
             <Feather name="plus-circle" size={24} color="gray" />
           </Pressable>
         </View>

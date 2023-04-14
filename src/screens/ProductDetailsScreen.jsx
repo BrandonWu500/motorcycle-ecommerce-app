@@ -23,7 +23,6 @@ const ProductDetailsScreen = ({ route }) => {
   // const product = useSelector(selectCurProduct);
   const { data: product, isLoading, error } = useGetProductQuery(itemId);
   const { width } = useWindowDimensions();
-
   const handleAddToCart = () => {
     dispatch(addCartItem(product));
     Alert.alert(`${product.name}`, "Added to Cart");
