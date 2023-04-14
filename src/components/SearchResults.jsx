@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useGetOrderQuery } from "../store/apiSlice";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import formatCurrency from "../utils/formatCurrency";
 const SearchResults = ({ searchTerm }) => {
   const [filteredSearchTerm, setFilteredSearchTerm] = useState(searchTerm);
@@ -35,10 +41,14 @@ const SearchResults = ({ searchTerm }) => {
       <View style={styles.rowSpread}>
         <View style={styles.col}>
           <Text style={styles.valBold}>Preparing</Text>
-          <MaterialCommunityIcons name="truck" size={24} color="black" />
+          <FontAwesome5 name="motorcycle" size={24} color="black" />
         </View>
         <Text style={styles.val}>Shipped</Text>
         <Text style={styles.val}>Delivered</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.key}>Items:</Text>
+        {/* do product lookup by id */}
       </View>
     </View>
   );

@@ -14,8 +14,13 @@ import {
   selectTotal,
 } from "../store/cartSlice";
 import formatCurrency from "../utils/formatCurrency";
-import { useCreateOrderMutation } from "../store/apiSlice";
+import {
+  useCreateOrderMutation,
+  useStartPaymentMutation,
+} from "../store/apiSlice";
 import { useEffect } from "react";
+import { useStripe } from "@stripe/stripe-react-native";
+
 const OrderSummary = ({ cartItems }) => {
   const dispatch = useDispatch();
   const subtotal = useSelector(selectSubtotal);
@@ -24,6 +29,9 @@ const OrderSummary = ({ cartItems }) => {
 
   const [createOrder, { data, isLoading, isSuccess, error }] =
     useCreateOrderMutation();
+  const [startPayment] = useStartPaymentMutation();
+
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
   useEffect(() => {
     if (isSuccess) {
@@ -34,6 +42,38 @@ const OrderSummary = ({ cartItems }) => {
       Alert.alert("Something went wrong");
     }
   }, [isSuccess, error]);
+
+  const handleCheckout = async () => {
+    // 1. Create payment intent
+    const { data: payData, error: payError } = await startPayment({
+      amount: Math.floor(total * 100), // to get in cents
+    });
+    if (payError) {
+      console.log(payError);
+      Alert.alert("Something went wrong");
+      return;
+    }
+
+    // 2. Initialize payment sheet
+    const { error: initPayError } = await initPaymentSheet({
+      merchantDisplayName: "Motorcycle E-Commerce",
+      paymentIntentClientSecret: payData.paymentIntent,
+    });
+    if (initPayError) {
+      console.log(initPayError);
+      Alert.alert("Something went wrong");
+      return;
+    }
+
+    // 3. Present payment sheet and process payment
+    const { error: presentPayError } = await presentPaymentSheet();
+    if (presentPayError) {
+      return;
+    }
+
+    // 4. Create order if payment successful
+    handleCreateOrder();
+  };
 
   const handleCreateOrder = () => {
     createOrder({
@@ -63,7 +103,7 @@ const OrderSummary = ({ cartItems }) => {
         <Text style={styles.textBold}>Total</Text>
         <Text style={styles.textBold}>{formatCurrency(total)}</Text>
       </View>
-      <Pressable style={styles.btn} onPress={handleCreateOrder}>
+      <Pressable style={styles.btn} onPress={handleCheckout}>
         {isLoading ? (
           <ActivityIndicator size="large" />
         ) : (
