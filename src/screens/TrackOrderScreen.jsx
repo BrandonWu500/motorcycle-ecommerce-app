@@ -13,6 +13,7 @@ const TrackOrderScreen = () => {
         onChangeText={setOrderRef}
         placeholder="Enter Your Order ID"
         placeholderTextColor="gray"
+        autoCapitalize="none"
       />
       <SearchResults searchTerm={debouncedOrderRef} />
     </View>

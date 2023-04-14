@@ -5,8 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import formatCurrency from "../utils/formatCurrency";
 const SearchResults = ({ searchTerm }) => {
   const [filteredSearchTerm, setFilteredSearchTerm] = useState(searchTerm);
-  const { data, isLoading, isSuccess, error } =
-    useGetOrderQuery(filteredSearchTerm);
+  const { data, isLoading, error } = useGetOrderQuery(filteredSearchTerm);
 
   useEffect(() => {
     if (searchTerm.length >= 5) {
@@ -21,7 +20,7 @@ const SearchResults = ({ searchTerm }) => {
   return (
     <View style={styles.container}>
       {Object.entries(data.customer).map(([key, val]) => (
-        <View style={styles.row}>
+        <View style={styles.row} key={key}>
           <Text style={styles.key}>{key}:</Text>
           <Text style={styles.val}>{val}</Text>
         </View>
