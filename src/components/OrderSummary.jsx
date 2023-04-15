@@ -33,8 +33,6 @@ const OrderSummary = ({ cartItems }) => {
 
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
-  console.log(cartItems);
-
   useEffect(() => {
     if (isSuccess) {
       Alert.alert("Order Created", `Your Order ID is ${data?.ref}`);
